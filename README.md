@@ -1,6 +1,6 @@
 # About Me
 This site is under building as I am new to GitHub, but have a look and consider downloading my CV!
-[Download CV](/CV_april_2024.pdf)
+[Download CV](/CV.pdf)
 
 ## Education
 ### Master's Degree in Physics Of Complex Systems / Politecnico di Torino, International Track
