@@ -1,5 +1,5 @@
 # Davide Paolino
-This site is under building as I am new to GitHub, but have a look and consider downloading my CV!
+This site is under building, but have a look and consider downloading my CV!
 
 **M.Sc. Physics of Complex Systems**  
 📍 Torino, Italy  
