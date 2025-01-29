@@ -5,7 +5,7 @@ This site is under building as I am new to GitHub, but have a look and consider 
 📍 Torino, Italy  
 📧 [davide.paolino@studenti.polito.it](mailto:davide.paolino@studenti.polito.it)  
 🌐 [Personal Website](https://paolinodavide.github.io)  
-📄 [Download CV](/CV_Davide_Paolino.pdf)
+📄 [Download CV](./CV_Davide_Paolino.pdf)
 
 ---
 
