@@ -2,6 +2,6 @@ title: Davide Paolino
 logo: /profile_pic.jpg
 description: Hi, I'm Davide! Take a look at my portfolio.
 email: davide.paolino@studenti.polito.it
-remote_theme: pages-themes/midnight@v0.2.0
+remote_theme: pages-themes/minimal@v0.2.0
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
