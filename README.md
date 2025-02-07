@@ -1,5 +1,5 @@
 # Davide Paolino
-This site is under building,, but have a look and consider downloading my CV!
+This site is under building, but have a look and consider downloading my CV!
 
 **M.Sc. Physics of Complex Systems**  
 📍 Torino, Italy  
@@ -86,7 +86,7 @@ I am a Master's student in **Physics of Complex Systems** at Politecnico di Tori
 ## Links
 - [GitHub](https://github.com/paolinodavide)  
 - [LinkedIn](https://www.linkedin.com/in/davide-paolino)  
-- [CV PDF](https://paolinodavide.github.io/cv.pdf)  
+- [CV PDF](./CV_Davide_Paolino.pdf)  
 
 ---
 
