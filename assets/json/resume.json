@@ -6,7 +6,7 @@
     "email": "davide.paolino@studenti.polito.it",
     "phone": "",
     "url": "https://paolinodavide.github.io",
-    "summary": "Master's student in Physics of Complex Systems with a focus on statistical physics, computational methods, and stochastic processes. Currently researching force inference techniques and Monte Carlo simulations.",
+    "summary": "Master's student in Physics of Complex Systems with a focus on statistical physics, computational methods, and stochastic processes. My primary research interests lie in the applications of statistical physics to glassy systems, machine learning, and neuroscience. I am currently working with Professor Ludovic Berthier for my internship. I am passionate about teaching, coding, and sports.",
     "location": {
       "address": "Torino, Italy",
       "postalCode": "",
@@ -34,8 +34,8 @@
       "url": "https://www.polito.it/",
       "startDate": "2022-09-01",
       "endDate": "Present",
-      "summary": "Assisted first-year students with Mathematical Analysis I and Physics I through frontal exercise sessions, improving communication and mentoring skills.",
-      "highlights": ["Tutored over 100 students", "Developed problem-solving strategies for introductory physics"]
+      "summary": "Assisted first-year students with Mathematical Analysis I and Physics I through frontal exercise sessions, improving communication and mentoring skills. Teaching is a core passion of mine, and this role has been instrumental in developing my ability to explain complex concepts clearly and effectively.",
+      "highlights": ["Tutored over 400 students", "Developed problem-solving strategies for introductory physics", "Refined pedagogical skills through hands-on teaching"]
     }
   ],
   "volunteer": [
@@ -55,10 +55,10 @@
       "url": "https://www.polito.it/",
       "area": "Physics of Complex Systems",
       "studyType": "M.Sc.",
-      "startDate": "2023-09-01",
+      "startDate": "2023-09-20",
       "endDate": "2025-07-01",
       "score": "28.48/30",
-      "courses": ["Statistical Physics", "Computational Methods", "Stochastic Processes"]
+      "courses": ["Statistical Physics", "Computational Science", "Stochastic Processes"]
     },
     {
       "institution": "Politecnico di Torino",
@@ -66,8 +66,8 @@
       "url": "https://www.polito.it/",
       "area": "Physical Engineering",
       "studyType": "B.Sc.",
-      "startDate": "2020-07-01",
-      "endDate": "2023-09-01",
+      "startDate": "2020-09-01",
+      "endDate": "2023-09-20",
       "score": "107/110",
       "courses": ["Monte Carlo Simulations", "Condensed Matter Physics"]
     }
