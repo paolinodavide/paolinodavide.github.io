@@ -27,27 +27,6 @@
       }
     ]
   },
-  "work": [
-    {
-      "name": "Politecnico di Torino",
-      "position": "Teaching Tutor",
-      "url": "https://www.polito.it/",
-      "startDate": "2022-09-01",
-      "endDate": "Present",
-      "summary": "Assisted first-year students with Mathematical Analysis I and Physics I through frontal exercise sessions, improving communication and mentoring skills. Teaching is a core passion of mine, and this role has been instrumental in developing my ability to explain complex concepts clearly and effectively.",
-      "highlights": ["Tutored over 400 students", "Developed problem-solving strategies for introductory physics", "Refined pedagogical skills through hands-on teaching"]
-    }
-  ],
-  "volunteer": [
-    {
-      "organization": "Community Service",
-      "location": "Torino, Italy",
-      "position": "Volunteer",
-      "startDate": "2018-01-01",
-      "endDate": "Present",
-      "summary": "Engaged in community service, developing teamwork, leadership, and problem-solving skills."
-    }
-  ],
   "education": [
     {
       "institution": "Politecnico di Torino, SISSA/ICTP, Université Paris Cité",
@@ -86,6 +65,27 @@
       "startDate": "2023-07-01",
       "endDate": "2023-09-01",
       "summary": "Simulated the 2D Ising model to study phase transitions using Monte Carlo techniques."
+    }
+  ],
+  "work": [
+    {
+      "name": "Politecnico di Torino",
+      "position": "Teaching Tutor",
+      "url": "https://www.polito.it/",
+      "startDate": "2022-10-01",
+      "endDate": "2024-06-12",
+      "summary": "Assisted first-year students with Mathematical Analysis I and Physics I through frontal exercise sessions, improving communication and mentoring skills. Teaching is a core passion of mine, and this role has been instrumental in developing my ability to explain complex concepts clearly and effectively.",
+      "highlights": ["Tutored over 400 students", "Developed problem-solving strategies for introductory physics", "Refined pedagogical skills through hands-on teaching"]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Community Service",
+      "location": "Torino, Italy",
+      "position": "Volunteer",
+      "startDate": "2018-01-01",
+      "endDate": "Present",
+      "summary": "Engaged in community service, developing teamwork, leadership, and problem-solving skills."
     }
   ],
   "projects": [
