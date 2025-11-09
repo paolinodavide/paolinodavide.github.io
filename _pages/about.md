@@ -1,30 +1,32 @@
----
-layout: about
-title: about
-permalink: /
-subtitle: M.Sc. in <a href='https://physics-complex-systems.fr/en/'>Physics of Complex Systems</a>
+  ---
+  layout: about
+  title: about
+  permalink: /
+  subtitle: PhD Candidate in Active Matter Physics at <a href='https://www.gulliver.espci.fr'>Gulliver Lab</a>
 
-profile:
-  align: right
-  image: profile_pic.jpg
-  image_circular: false # crops the image to make it circular
+  profile:
+    align: right
+    image: profile_pic.jpg
+    image_circular: false # crops the image to make it circular
 
-selected_papers: false # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+  selected_papers: false # includes a list of papers marked as "selected={true}"
+  social: true # includes social icons at the bottom of the page
 
-announcements:
-  enabled: false # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  announcements:
+    enabled: false # includes a list of news items
+    scrollable: true # adds a vertical scroll bar if there are more than 3 news items
+    limit: 5 # leave blank to include all the news in the `_news` folder
 
-latest_posts:
-  enabled: false
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
----
+  latest_posts:
+    enabled: false
+    scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
+    limit: 3 # leave blank to include all the blog posts
+  ---
 
-I am a Master's student in Physics of Complex Systems, currently studying at Politecnico di Torino, SISSA/ICTP (Trieste), and Université Paris Cité. My academic journey has been driven by a deep curiosity for statistical physics, computational methods, and stochastic processes, with applications ranging from condensed matter systems to data-driven inference techniques.
+  I am a PhD student in Physics, currently working on active matter systems. My research focuses on developing and analyzing numerical simulations to study the collective behavior and emergent dynamics of complex systems out of equilibrium.
 
-My research focuses on developing Monte Carlo simulations, Boltzmann inversion methods, and force inference models to better understand complex interacting systems. As part of my Master's thesis, I am working on inferring particle interactions from experimental data, a project that bridges physics, statistical learning, and computational modeling.
+  I hold a Master’s degree in Physics of Complex Systems from Politecnico di Torino, SISSA/ICTP (Trieste), and Université Paris Cité, where I worked on Boltzmann inversion methods and force inference models to extract effective interactions from experimental data.
 
-I am passionate about applying computational physics and statistical modeling to real-world problems, whether in academia or industry. In my free time, I enjoy coding, exploring interdisciplinary research topics, and sharing knowledge through scientific outreach.
+  My scientific interests lie at the intersection of statistical physics, computational modeling, and data-driven inference, with a broader curiosity for problems bridging physics, machine learning, and biophysics.
+
+  Beyond research, I enjoy teaching, coding, and sharing physics concepts in an accessible way. In my free time, you’ll often find me exploring new ideas, learning new tools, or staying active through sports.
