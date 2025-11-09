@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: M.Sc. in <a href='https://physics-complex-systems.fr/en/'>Physics of Complex Systems</a>
+subtitle: PhD in Active Matter Physics in <a href='https://gulliver.espci.fr'>Gulliver Lab</a>
 
 profile:
   align: right
