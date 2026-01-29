@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: PhD in Active Matter Physics in <a href='https://gulliver.espci.fr'>Gulliver Lab</a>
+subtitle: PhD Student
 
 profile:
   align: right
@@ -23,10 +23,8 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a PhD student in Physics, currently working on active matter systems. My research focuses on developing and analyzing numerical simulations to study the collective behavior and emergent dynamics of complex systems out of equilibrium.
+I am a PhD student with a background in Physics of Complex Systems. My academic journey has been driven by a deep curiosity for statistical physics, computational methods, and stochastic processes, with applications ranging from condensed matter systems to data-driven inference techniques.
 
-I hold a Master’s degree in Physics of Complex Systems from Politecnico di Torino, SISSA/ICTP (Trieste), and Université Paris Cité, where I worked on Boltzmann inversion methods and force inference models to extract effective interactions from experimental data.
+My research focuses on developing Monte Carlo simulations, Boltzmann inversion methods, and force inference models to better understand complex interacting systems. As part of my Master's thesis, I am working on inferring particle interactions from experimental data, a project that bridges physics, statistical learning, and computational modeling.
 
-My scientific interests lie at the intersection of statistical physics, computational modeling, and data-driven inference, with a broader curiosity for problems bridging physics, machine learning, and biophysics.
-
-Beyond research, I enjoy teaching, coding, and sharing physics concepts in an accessible way. In my free time, you’ll often find me exploring new ideas, learning new tools, or staying active through sports.
+I am passionate about applying computational physics and statistical modeling to real-world problems, whether in academia or industry. In my free time, I enjoy coding, exploring interdisciplinary research topics, and sharing knowledge through scientific outreach.

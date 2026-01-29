@@ -1,18 +1,18 @@
 {
   "basics": {
     "name": "Davide Paolino",
-    "label": "M.Sc. Physics of Complex Systems",
+    "label": "PhD Student in Active Matter Physics",
     "image": "",
     "email": "davide.paolino@studenti.polito.it",
     "phone": "",
     "url": "https://paolinodavide.github.io",
-    "summary": "Master's student in Physics of Complex Systems with a focus on statistical physics, computational methods, and stochastic processes. My primary research interests lie in the applications of statistical physics to glassy systems, machine learning, and neuroscience. I am currently working with Professor Ludovic Berthier for my internship. I am passionate about teaching, coding, and sports.",
+    "summary": "First year PhD student in Physics of Complex Systems with a focus on statistical physics, computational methods, and stochastic processes. My primary research interests lie in the applications of statistical physics to glassy systems, machine learning, and neuroscience. I am currently working under the supervision of L. Berthier at the Gulliver Lab, ESPCI, PSL. The topic of my PhD is numerical simulations of active matter. I am passionate about teaching, coding, and sports.",
     "location": {
-      "address": "Torino, Italy",
+      "address": "Paris, France",
       "postalCode": "",
-      "city": "Torino",
-      "countryCode": "IT",
-      "region": "Piedmont"
+      "city": "Paris",
+      "countryCode": "FR",
+      "region": ""
     },
     "profiles": [
       {
@@ -29,6 +29,17 @@
   },
   "education": [
     {
+      "institution": "Gulliver Lab, ESPCI, PSL",
+      "location": "Paris, France",
+      "url": "https://www.gulliver.espci.fr/",
+      "area": "Physics of Complex Systems",
+      "studyType": "PhD",
+      "startDate": "2026-01-01",
+      "endDate": "Present",
+      "score": "",
+      "courses": ["Numerical simulations of active matter"]
+    },
+    {
       "institution": "Politecnico di Torino, SISSA/ICTP, Université Paris Cité",
       "location": "Italy & France",
       "url": "https://www.polito.it/",
@@ -36,7 +47,7 @@
       "studyType": "M.Sc.",
       "startDate": "2023-09-20",
       "endDate": "2025-07-01",
-      "score": "28.48/30",
+      "score": "110L/110",
       "courses": ["Statistical Physics", "Computational Science", "Stochastic Processes"]
     },
     {
@@ -51,23 +62,16 @@
       "courses": ["Monte Carlo Simulations", "Condensed Matter Physics"]
     }
   ],
-  "research": [
-    {
-      "institution": "Gulliver Lab, ESPCI Paris",
-      "position": "Research Intern",
-      "startDate": "2025-03-01",
-      "endDate": "2025-07-01",
-      "summary": "Developing methods to infer particle interactions from experimental data, with applications in equilibrium and non-equilibrium physics, including active matter and disordered systems."
-    },
-    {
-      "institution": "Politecnico di Torino",
-      "position": "Bachelor Thesis Research",
-      "startDate": "2023-07-01",
-      "endDate": "2023-09-01",
-      "summary": "Simulated the 2D Ising model to study phase transitions using Monte Carlo techniques."
-    }
-  ],
   "work": [
+    {
+      "name": "Gulliver Lab, ESPCI, PSL",
+      "position": "PhD Student",
+      "url": "https://www.gulliver.espci.fr/",
+      "startDate": "2026-01-01",
+      "endDate": "Present",
+      "summary": "Working on numerical simulations of active matter under the supervision of L. Berthier.",
+      "highlights": []
+    },
     {
       "name": "Politecnico di Torino",
       "position": "Teaching Tutor",
@@ -89,6 +93,12 @@
     }
   ],
   "projects": [
+    {
+      "name": "Direct Boltzmann Inversion",
+      "summary": "Reconstructing particle interactions from experimental data without new simulations.",
+      "highlights": [],
+      "url": ""
+    },
     {
       "name": "Monte Carlo Simulation of 2D Ising Model",
       "summary": "Studied phase transitions using Monte Carlo techniques in statistical physics.",

@@ -2,96 +2,68 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
+      value: Davide Paolino
+    - name: Email
+      value: davide.paolino@espci.fr
+    - name: Location
+      value: Paris, France
     - name: Languages
-      value: English, German
+      value: Italian (Native), English (Proficient, C1), French (Beginner, A2)
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: PhD Student
+      institution: Gulliver Lab, ESPCI, PSL, Paris, France
+      year: 2026 - Present
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
+        - Supervision: L. Berthier
+        - Topic: Numerical simulations of active matter
+    - title: M.Sc. in Physics of Complex Systems
+      institution: Politecnico di Torino, SISSA/ICTP, Université Paris Cité
+      year: 2023 - 2025
       description:
-        - Description 1.
-        - Description 2.
+        - Score 110L/110
+        - Courses Statistical Physics, Computational Science, Stochastic Processes
+    - title: B.Sc. in Physical Engineering
+      institution: Politecnico di Torino
+      year: 2020 - 2023
+      description:
+        - Score 107/110
+        - Courses Monte Carlo Simulations, Condensed Matter Physics
 
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: PhD Student
+      institution: Gulliver Lab, ESPCI, PSL
+      year: 2026 - Present
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - Supervision: L. Berthier
+        - Topic: Numerical simulations of active matter
+    - title: Bachelor Thesis Research
+      institution: Politecnico di Torino
+      year: 2023
       description:
-        - Description 1.
-        - Description 2.
-
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
+        - Simulated the 2D Ising model to study phase transitions using Monte Carlo techniques.
+    - title: Teaching Tutor
+      institution: Politecnico di Torino
+      year: 2022-2024
       description:
+        - Assisted first-year students with Mathematical Analysis I and Physics I through frontal exercise sessions, improving communication and mentoring skills.
 
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
-
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
-
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 1921
-      items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
-      items:
-        - Max Planck Medal
-
-- title: Academic Interests
+- title: Skills
   type: nested_list
   contents:
-    - title: Topic 1.
+    - title: Programming
       items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
+        - Python (NumPy, SciPy, Torch)
+        - Java
+        - MATLAB
+        - LaTeX
+        - HTML
+    - title: Computational Methods
       items:
-        - Description 1.
-        - Description 2.
-
-- title: Other Interests
-  type: list
-  contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+        - Monte Carlo Methods
+        - Data Analysis
+        - Boltzmann Inversion

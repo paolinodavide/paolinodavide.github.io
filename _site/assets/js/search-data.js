@@ -9,7 +9,14 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-cv",
+  },{id: "nav-talks",
+          title: "Talks",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/talks/";
+          },
+        },{id: "nav-cv",
           title: "CV",
           description: "Explore my academic journey, research experience, and skills in detail. You can also download the latest PDF version of my CV.",
           section: "Navigation",
@@ -32,7 +39,7 @@ ninja.data = [{
         title: 'email',
         section: 'Socials',
         handler: () => {
-          window.open("mailto:%64%61%76%69%64%65.%70%61%6F%6C%69%6E%6F@%73%74%75%64%65%6E%74%69.%70%6F%6C%69%74%6F.%69%74", "_blank");
+          window.open("mailto:%64%61%76%69%64%65.%70%61%6F%6C%69%6E%6F@%65%73%70%63%69.%66%72", "_blank");
         },
       },{
         id: 'social-github',

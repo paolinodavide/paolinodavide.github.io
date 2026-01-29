@@ -2,14 +2,14 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: Davide Paolino | PhD Candidate in Active Matter Physics # the website title (if blank, full name will be used instead)
+title: Davide Paolino | Student in Statistical Physics & Complex Systems # the website title (if blank, full name will be used instead)
 first_name: Davide
 #middle_name: R. # Uncomment and add if you have a middle name
 last_name: Paolino
 contact_note: >
   Feel free to reach out via email for collaborations or questions. I'm always open to interesting projects and discussions!
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  PhD in Active Matter Physics of Complex Systems | Researcher in Statistical Physics, Computational Methods and Machine Learning | Passionate about Complex Systems and Data Science.
+  M.Sc. Physics of Complex Systems | Researcher in Statistical Physics, Computational Methods and Machine Learning | Passionate about Complex Systems and Data Science.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
