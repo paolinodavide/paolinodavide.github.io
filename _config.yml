@@ -196,7 +196,6 @@ exclude:
   - assets/jupyter/blog.ipynb
   - _pages/blog.md  
   - _pages/repositories
-  - _pages/publications.md
   - _pages/projects.md
   - _pages/teaching.md
   - _pages/repositories.md
@@ -276,8 +275,8 @@ Comment: >
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Einstein]
-  first_name: [Albert, A.]
+  last_name: [Paolino]
+  first_name: [Davide, D.]
 
   style: apa
   locale: en
