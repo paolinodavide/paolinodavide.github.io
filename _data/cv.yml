@@ -8,56 +8,76 @@
     - name: Location
       value: Paris, France
     - name: Languages
-      value: Italian (Native), English (Proficient, C1), French (Beginner, A2)
+      value: Italian (Native), English (Proficient, C1), French (Intermediate, B1)
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD Student
-      institution: Gulliver Lab, ESPCI, PSL, Paris, France
-      year: 2026 - Present
+    - title: PhD Candidate in Physics (Active Matter)
+      institution: Gulliver Lab, ESPCI-Paris PSL
+      year: Oct 2025 - Present
       description:
-        - Supervision: L. Berthier
-        - Topic: Numerical simulations of active matter
+        - Supervisor Prof. Ludovic Berthier
+        - Investigating the statistical physics of active and disordered systems using numerical simulations and analytical methods. Focus on glassy dynamics, non-equilibrium phase transitions, and novel collective phenomena.
     - title: M.Sc. in Physics of Complex Systems
       institution: Politecnico di Torino, SISSA/ICTP, Université Paris Cité
-      year: 2023 - 2025
+      year: Sep 2023 - Oct 2025
       description:
-        - Score 110L/110
-        - Courses Statistical Physics, Computational Science, Stochastic Processes
+        - Final Grade 110 cum laude / 110
+        - Thesis "Boltzmann Inversion and force inference"
+        - International double-degree program across Italy and France, with coursework between theoretical physics, computational science and stochastic processes.
     - title: B.Sc. in Physical Engineering
       institution: Politecnico di Torino
-      year: 2020 - 2023
+      year: Jul 2020 - Sep 2023
       description:
-        - Score 107/110
-        - Courses Monte Carlo Simulations, Condensed Matter Physics
+        - Final Grade 107/110
+        - Thesis "Monte Carlo Simulations of 2D Ising Model"
 
-- title: Experience
+- title: Research Experience
   type: time_table
   contents:
-    - title: PhD Student
-      institution: Gulliver Lab, ESPCI, PSL
-      year: 2026 - Present
+    - title: Research Intern
+      institution: Gulliver Lab, ESPCI-Paris PSL
+      year: Mar 2025 - Jul 2025
       description:
-        - Supervision: L. Berthier
-        - Topic: Numerical simulations of active matter
+        - Supervisor Prof. L. Berthier
+        - Direct Boltzmann inversion method from particle configurations at arbitrary state points (arXiv:2603.12081).
+        - Developing methods to infer particle interactions directly from experimental data.
     - title: Bachelor Thesis Research
       institution: Politecnico di Torino
-      year: 2023
+      year: Jul 2023 - Sep 2023
       description:
-        - Simulated the 2D Ising model to study phase transitions using Monte Carlo techniques.
+        - Supervisor Prof. L. F. Tocchio
+        - Simulations of the 2D Ising model performed to study phase transitions using Monte Carlo techniques.
+
+- title: Academic Projects and Events
+  type: time_table
+  contents:
+    - title: Journées de Physique Statistique 2026
+      institution: Paris, France
+      year: Jan 2026
+      description:
+        - Participated in the conference focusing on statistical physics.
+    - title: Spring College in the Physics of Complex Systems
+      institution: ICTP, Trieste, Italy
+      year: Spring 2025
+
+- title: Work Experience
+  type: time_table
+  contents:
     - title: Teaching Tutor
       institution: Politecnico di Torino
-      year: 2022-2024
+      year: Sep 2022 - Sep 2024
       description:
-        - Assisted first-year students with Mathematical Analysis I and Physics I through frontal exercise sessions, improving communication and mentoring skills.
+        - Assisted first-year students with Mathematical Analysis I and Physics I through frontal exercise sessions. Improved communication and mentoring skills.
 
-- title: Skills
+- title: Technical Skills
   type: nested_list
   contents:
     - title: Programming
       items:
         - Python (NumPy, SciPy, Torch)
+        - Julia
         - Java
         - MATLAB
         - LaTeX
