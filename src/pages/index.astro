@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About Me" activeTab="about">
+  <div style="animation: fadeIn 0.5s ease-out;">
+    <h1 style="font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 0.5rem;">Davide Paolino</h1>
+    <p style="font-size: 1.1rem; color: var(--color-accent); font-weight: 500; margin-bottom: 2rem;">
+      PhD Candidate in Physics (Active Matter) at Gulliver Lab, ESPCI Paris
+    </p>
+
+    <div style="font-size: 1.05rem; line-height: 1.75; color: var(--text-secondary); display: flex; flex-direction: column; gap: 1.25rem;">
+      <p>
+        I am a PhD student with a background in Physics of Complex Systems. My academic journey has been driven by a deep curiosity for statistical physics, computational methods, and stochastic processes, with applications ranging from condensed matter systems to data-driven inference techniques.
+      </p>
+      
+      <p>
+        My research focuses on developing Monte Carlo simulations, Boltzmann inversion methods, and force inference models to better understand complex interacting systems. As part of my Master's thesis, I worked on inferring particle interactions from configuration data, a project that bridges physics, statistical learning, and computational modeling.
+      </p>
+      
+      <p>
+        I am passionate about applying computational physics and statistical modeling to real-world problems, whether in academia or industry. In my free time, I enjoy coding, exploring interdisciplinary research topics, and sharing knowledge through scientific outreach.
+      </p>
+    </div>
+
+    <div style="margin-top: 3rem; padding: 2rem; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+      <h3 style="margin-bottom: 0.75rem; color: var(--text-primary);">Research Interests</h3>
+      <p style="margin-bottom: 1.25rem; font-size: 0.95rem;">
+        My work lies at the intersection of statistical mechanics and computational physics:
+      </p>
+      <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0;">
+        <li class="tag">Active Matter</li>
+        <li class="tag">Statistical Physics</li>
+        <li class="tag">Monte Carlo Simulations</li>
+        <li class="tag">Inverse Problems</li>
+        <li class="tag">Interacting Particle Systems</li>
+        <li class="tag">Disordered Systems</li>
+      </ul>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

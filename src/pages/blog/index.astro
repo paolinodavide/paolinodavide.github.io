@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Helper to format date
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+---
+
+<Layout title="Blog" activeTab="blog">
+  <div style="animation: fadeIn 0.5s ease-out;">
+    <h1 style="font-family: var(--font-serif); margin-bottom: 0.5rem;">Blog Posts</h1>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Thoughts, tutorials, and miscellaneous writes.</p>
+
+    <div class="blog-list">
+      {sortedPosts.length === 0 ? (
+        <p style="color: var(--text-tertiary); text-align: center; padding: 2rem;">No posts found.</p>
+      ) : (
+        sortedPosts.map((post) => (
+          <article class="blog-card">
+            <div class="blog-date">{formatDate(post.data.date)}</div>
+            <h3 class="blog-card-title">
+              <a href={`/blog/${post.id}`} style="color: var(--text-primary); transition: color var(--transition-fast);">
+                {post.data.title}
+              </a>
+            </h3>
+            {post.data.description && <p class="blog-card-desc">{post.data.description}</p>}
+            <div style="margin-top: 1rem;">
+              <a href={`/blog/${post.id}`} style="font-size: 0.9rem; font-weight: 500; color: var(--color-primary);">
+                Read post <i class="fa-solid fa-arrow-right" style="margin-left: 0.25rem; font-size: 0.8rem;"></i>
+              </a>
+            </div>
+          </article>
+        ))
+      )}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

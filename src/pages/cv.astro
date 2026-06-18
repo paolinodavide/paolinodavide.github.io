@@ -1,0 +1,83 @@
+---
+import fs from 'fs';
+import path from 'path';
+import YAML from 'yaml';
+import Layout from '../layouts/Layout.astro';
+
+// Resolve and read cv.yml
+const cvPath = path.resolve('src/data/cv.yml');
+const cvFile = fs.readFileSync(cvPath, 'utf8');
+const cvData = YAML.parse(cvFile);
+---
+
+<Layout title="Curriculum Vitae" activeTab="cv">
+  <div style="animation: fadeIn 0.5s ease-out;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h1 style="font-family: var(--font-serif); margin-bottom: 0.5rem;">Curriculum Vitae</h1>
+        <p style="color: var(--text-secondary); margin-bottom: 0;">My academic journey, research experience, and technical skills.</p>
+      </div>
+      <a href="/assets/CV_Davide_Paolino.pdf" download class="btn btn-primary">
+        <i class="fa-solid fa-download" style="margin-right: 0.5rem;"></i> Download PDF CV
+      </a>
+    </div>
+
+    {cvData.map((section: any) => (
+      <div class="cv-section">
+        <h2 class="cv-title">{section.title}</h2>
+
+        {section.type === 'map' && (
+          <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;">
+            {section.contents.map((item: any) => (
+              <div>
+                <strong style="display: block; font-size: 0.85rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">{item.name}</strong>
+                <span style="font-size: 1rem; color: var(--text-primary); font-weight: 500;">{item.value}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {section.type === 'time_table' && (
+          <div class="timeline">
+            {section.contents.map((item: any) => (
+              <div class="timeline-item">
+                <div class="timeline-date">{item.year}</div>
+                <div class="timeline-role">{item.title}</div>
+                <div class="timeline-institution">{item.institution}</div>
+                {item.description && (
+                  <ul class="timeline-desc">
+                    {item.description.map((descLine: string) => (
+                      <li>{descLine}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {section.type === 'nested_list' && (
+          <div class="skills-container">
+            {section.contents.map((item: any) => (
+              <div class="skills-category">
+                <h3 class="skills-category-title">{item.title}</h3>
+                <div class="tags">
+                  {item.items.map((skill: string) => (
+                    <span class="tag">{skill}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</Layout>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
