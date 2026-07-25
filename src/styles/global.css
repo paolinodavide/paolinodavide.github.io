@@ -142,9 +142,7 @@ main {
 }
 
 .layout-grid {
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 3rem;
+  display: block;
 }
 
 .layout-single {
@@ -153,12 +151,11 @@ main {
 }
 
 @media (max-width: 768px) {
-  .layout-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
   .sidebar {
-    order: -1;
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 2rem;
   }
   
   .nav-container {
@@ -177,9 +174,22 @@ main {
 
 /* Sidebar Profile Card */
 .sidebar {
+  float: right;
+  width: 280px;
+  margin-left: 3rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+/* Clear floats to prevent overlaps */
+.section-divider,
+.interests-section,
+.cv-section,
+.pub-list,
+footer {
+  clear: both;
 }
 
 .profile-card {
