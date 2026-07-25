@@ -64,7 +64,19 @@ function renderAuthors(authorsStr: string) {
         const authors = renderAuthors(pub.author);
         return (
           <div class="pub-card">
-            <h3 class="pub-title">{pub.title}</h3>
+            <h3 class="pub-title">
+              {pub.doi ? (
+                <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer" style="color: inherit;">
+                  {pub.title}
+                </a>
+              ) : pub.url ? (
+                <a href={pub.url} target="_blank" rel="noopener noreferrer" style="color: inherit;">
+                  {pub.title}
+                </a>
+              ) : (
+                pub.title
+              )}
+            </h3>
             <div class="pub-authors">
               {authors.map((auth, i) => (
                 <span class={auth.isMe ? 'me' : ''}>
@@ -113,5 +125,14 @@ function renderAuthors(authorsStr: string) {
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  .pub-title a {
+    transition: color var(--transition-fast);
+  }
+
+  .pub-title a:hover {
+    color: var(--color-primary) !important;
+    text-decoration: underline;
   }
 </style>

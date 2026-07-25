@@ -26,9 +26,11 @@ import Layout from '../layouts/Layout.astro';
         <div class="profile-card">
           <img src="/assets/profile_pic.jpg" alt="Davide Paolino" class="profile-img" />
           <h2 class="profile-name">Davide Paolino</h2>
-          <div class="profile-title">PhD Candidate in Physics</div>
+          <div class="profile-title">PhD Student in Physics</div>
           <p style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 1rem;">
-            Gulliver Lab, ESPCI-Paris PSL
+            <a href="https://www.gulliver.espci.fr/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">
+              Gulliver Lab, ESPCI-Paris PSL
+            </a>
           </p>
           <div class="social-links">
             <a href="mailto:davide.paolino@espci.fr" class="social-icon" title="Email">
@@ -70,30 +72,20 @@ import Layout from '../layouts/Layout.astro';
 
         <a href="/publications" class="interest-card-link">
           <div class="interest-card">
-            <div class="interest-icon">🕸️</div>
-            <h3 class="interest-title">Statistical Mechanics <i class="fa-solid fa-arrow-right-long arrow-icon"></i></h3>
-            <p style="font-size: 0.925rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.5;">
-              Analyzing out-of-equilibrium thermodynamics and phase transitions in disordered interactive systems.
-            </p>
-          </div>
-        </a>
-
-        <a href="/publications" class="interest-card-link">
-          <div class="interest-card">
-            <div class="interest-icon">🎲</div>
-            <h3 class="interest-title">Monte Carlo Methods <i class="fa-solid fa-arrow-right-long arrow-icon"></i></h3>
-            <p style="font-size: 0.925rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.5;">
-              Building high-efficiency stochastic simulations to model many-body transitions and configuration states.
-            </p>
-          </div>
-        </a>
-
-        <a href="/publications" class="interest-card-link">
-          <div class="interest-card">
             <div class="interest-icon">🔍</div>
             <h3 class="interest-title">Inverse Problems <i class="fa-solid fa-arrow-right-long arrow-icon"></i></h3>
             <p style="font-size: 0.925rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.5;">
-              Reconstructing effective pair interactions and forces directly from experimental configurations.
+              Measuring pair interactions and forces directly from empirical configurations.
+            </p>
+          </div>
+        </a>
+
+        <a href="/publications" class="interest-card-link">
+          <div class="interest-card">
+            <div class="interest-icon">🕸️</div>
+            <h3 class="interest-title">Statistical Mechanics <i class="fa-solid fa-arrow-right-long arrow-icon"></i></h3>
+            <p style="font-size: 0.925rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.5;">
+              Analyzing out-of-equilibrium phase transitions in disordered systems.
             </p>
           </div>
         </a>
@@ -167,6 +159,7 @@ import Layout from '../layouts/Layout.astro';
     text-decoration: none;
     color: inherit;
     display: block;
+    height: 100%;
   }
 
   .interest-card-link:hover {
