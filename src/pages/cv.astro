@@ -12,7 +12,8 @@ const cvData = YAML.parse(cvFile);
 
 <Layout title="Curriculum Vitae" activeTab="cv">
   <div style="animation: fadeIn 0.5s ease-out;">
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+    <!-- Title Section -->
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;">
       <div>
         <h1 style="font-family: var(--font-serif); margin-bottom: 0.5rem;">Curriculum Vitae</h1>
         <p style="color: var(--text-secondary); margin-bottom: 0;">My academic journey, research experience, and technical skills.</p>
@@ -22,55 +23,85 @@ const cvData = YAML.parse(cvFile);
       </a>
     </div>
 
+    <!-- Sections -->
     {cvData.map((section: any) => (
-      <div class="cv-section">
-        <h2 class="cv-title">{section.title}</h2>
-
-        {section.type === 'map' && (
-          <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;">
-            {section.contents.map((item: any) => (
-              <div>
-                <strong style="display: block; font-size: 0.85rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">{item.name}</strong>
-                <span style="font-size: 1rem; color: var(--text-primary); font-weight: 500;">{item.value}</span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {section.type === 'time_table' && (
-          <div class="timeline">
-            {section.contents.map((item: any) => (
-              <div class="timeline-item">
-                <div class="timeline-date">{item.year}</div>
-                <div class="timeline-role">{item.title}</div>
-                <div class="timeline-institution">{item.institution}</div>
-                {item.description && (
-                  <ul class="timeline-desc">
-                    {item.description.map((descLine: string) => (
-                      <li>{descLine}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
-
-        {section.type === 'nested_list' && (
-          <div class="skills-container">
-            {section.contents.map((item: any) => (
-              <div class="skills-category">
-                <h3 class="skills-category-title">{item.title}</h3>
-                <div class="tags">
-                  {item.items.map((skill: string) => (
-                    <span class="tag">{skill}</span>
-                  ))}
+      section.title === 'General Information' ? (
+        <div class="cv-hero-grid">
+          <div class="cv-hero-left">
+            <h2 class="cv-title">{section.title}</h2>
+            <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; box-shadow: var(--shadow-sm);">
+              {section.contents.map((item: any) => (
+                <div>
+                  <strong style="display: block; font-size: 0.85rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">{item.name}</strong>
+                  <span style="font-size: 1rem; color: var(--text-primary); font-weight: 500;">{item.value}</span>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        )}
-      </div>
+          <div class="cv-hero-right">
+            <div class="profile-card">
+              <img src="/assets/profile_pic.jpg" alt="Davide Paolino" class="profile-img" />
+              <h2 class="profile-name">Davide Paolino</h2>
+              <div class="profile-title">PhD Candidate in Physics</div>
+              <p style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 1rem;">
+                Gulliver Lab, ESPCI-Paris PSL
+              </p>
+              <div class="social-links">
+                <a href="mailto:davide.paolino@espci.fr" class="social-icon" title="Email">
+                  <i class="fa-regular fa-envelope"></i>
+                </a>
+                <a href="https://github.com/paolinodavide" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/davide-paolino-58085418b" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://orcid.org/0009-0003-6658-2779" target="_blank" rel="noopener noreferrer" class="social-icon" title="ORCID">
+                  <i class="fa-brands fa-orcid"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div class="cv-section">
+          <h2 class="cv-title">{section.title}</h2>
+
+          {section.type === 'time_table' && (
+            <div class="timeline">
+              {section.contents.map((item: any) => (
+                <div class="timeline-item">
+                  <div class="timeline-date">{item.year}</div>
+                  <div class="timeline-role">{item.title}</div>
+                  <div class="timeline-institution">{item.institution}</div>
+                  {item.description && (
+                    <ul class="timeline-desc">
+                      {item.description.map((descLine: string) => (
+                        <li>{descLine}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {section.type === 'nested_list' && (
+            <div class="skills-container">
+              {section.contents.map((item: any) => (
+                <div class="skills-category">
+                  <h3 class="skills-category-title">{item.title}</h3>
+                  <div class="tags">
+                    {item.items.map((skill: string) => (
+                      <span class="tag">{skill}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )
     ))}
   </div>
 </Layout>
@@ -79,5 +110,23 @@ const cvData = YAML.parse(cvFile);
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  .cv-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 3.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .cv-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .cv-hero-right {
+      order: -1;
+    }
   }
 </style>

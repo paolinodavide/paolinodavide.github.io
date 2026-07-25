@@ -4,19 +4,48 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Home" activeTab="about">
   <div style="animation: fadeIn 0.5s ease-out; padding-top: 16vh; padding-bottom: 12vh;">
-    <!-- Large Bold Central/Modern Text -->
-    <h1 class="hero-text">
-      yo i'm davide<br/>
-      <span class="highlight">phd student</span> in physics of <span class="gradient-text">active matter</span>
-    </h1>
+    <div class="home-hero-grid">
+      <div class="home-hero-left">
+        <!-- Large Bold Central/Modern Text -->
+        <h1 class="hero-text">
+          yo <span class="emoji">👋</span> i'm davide<br/>
+          <span class="highlight">phd student</span> in physics of <span class="gradient-text">active matter</span>
+        </h1>
 
-    <div class="bio-text">
-      <p>
-        I am a PhD candidate at Gulliver Lab, ESPCI Paris, working under the supervision of Prof. Ludovic Berthier. My research focuses on active and disordered systems using numerical simulations and statistical physics tools to understand non-equilibrium phase transitions and glassy dynamics.
-      </p>
-      <p>
-        Previously, I graduated with a Master's in Physics of Complex Systems (Politecnico di Torino, SISSA, Université Paris Cité), working on Boltzmann Inversion and force inference methods.
-      </p>
+        <div class="bio-text">
+          <p>
+            I am a PhD candidate at Gulliver Lab, ESPCI Paris, working under the supervision of Prof. Ludovic Berthier. My research focuses on active and disordered systems using numerical simulations and statistical physics tools to understand non-equilibrium phase transitions and glassy dynamics.
+          </p>
+          <p>
+            Previously, I graduated with a Master's in Physics of Complex Systems (Politecnico di Torino, SISSA, Université Paris Cité), working on Boltzmann Inversion and force inference methods.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-hero-right">
+        <div class="profile-card">
+          <img src="/assets/profile_pic.jpg" alt="Davide Paolino" class="profile-img" />
+          <h2 class="profile-name">Davide Paolino</h2>
+          <div class="profile-title">PhD Candidate in Physics</div>
+          <p style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 1rem;">
+            Gulliver Lab, ESPCI-Paris PSL
+          </p>
+          <div class="social-links">
+            <a href="mailto:davide.paolino@espci.fr" class="social-icon" title="Email">
+              <i class="fa-regular fa-envelope"></i>
+            </a>
+            <a href="https://github.com/paolinodavide" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/davide-paolino-58085418b" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://orcid.org/0009-0003-6658-2779" target="_blank" rel="noopener noreferrer" class="social-icon" title="ORCID">
+              <i class="fa-brands fa-orcid"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Scroll Down Interests Redirecting to Publications -->
@@ -77,6 +106,23 @@ import Layout from '../layouts/Layout.astro';
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  .home-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .home-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .home-hero-right {
+      order: -1;
+    }
   }
 
   .hero-text {

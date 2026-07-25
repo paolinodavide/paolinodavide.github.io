@@ -6,10 +6,9 @@ interface Props {
   title: string;
   description?: string;
   activeTab?: string;
-  hideSidebar?: boolean;
 }
 
-const { title, description = "Davide Paolino - PhD Candidate in Physics", activeTab = "", hideSidebar = false } = Astro.props;
+const { title, description = "Davide Paolino - PhD Candidate in Physics", activeTab = "" } = Astro.props;
 
 // Fetch blog posts to index in search command palette
 const blogPosts = await getCollection('blog');
@@ -82,39 +81,8 @@ const searchIndex = [
     </header>
 
     <div class="container">
-      <main class={hideSidebar ? "layout-single" : "layout-grid"}>
-        <!-- Sidebar -->
-        {!hideSidebar && (
-          <aside class="sidebar">
-            <div class="profile-card">
-              <img src="/assets/profile_pic.jpg" alt="Davide Paolino" class="profile-img" />
-              <h2 class="profile-name">Davide Paolino</h2>
-              <div class="profile-title">PhD Candidate in Physics</div>
-              <p style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 1rem;">
-                Gulliver Lab, ESPCI-Paris PSL
-              </p>
-              <div class="social-links">
-                <a href="mailto:davide.paolino@espci.fr" class="social-icon" title="Email">
-                  <i class="fa-regular fa-envelope"></i>
-                </a>
-                <a href="https://github.com/paolinodavide" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub">
-                  <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/davide-paolino-58085418b" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn">
-                  <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-                <a href="https://orcid.org/0009-0003-6658-2779" target="_blank" rel="noopener noreferrer" class="social-icon" title="ORCID">
-                  <i class="fa-brands fa-orcid"></i>
-                </a>
-              </div>
-            </div>
-          </aside>
-        )}
-
-        <!-- Main Content Area -->
-        <section class="content-area">
-          <slot />
-        </section>
+      <main class="layout-single">
+        <slot />
       </main>
     </div>
 
