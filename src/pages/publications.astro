@@ -57,7 +57,7 @@ function renderAuthors(authorsStr: string) {
 <Layout title="Publications" activeTab="publications">
   <div style="animation: fadeIn 0.5s ease-out;">
     <h1 style="font-family: var(--font-serif); margin-bottom: 0.5rem;">Publications</h1>
-    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Preprints and published articles.</p>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Published articles.</p>
 
     <div class="pub-list">
       {publications.map((pub) => {
@@ -77,11 +77,10 @@ function renderAuthors(authorsStr: string) {
                   ))}
                 </div>
                 <div class="pub-meta">
-                  {pub.publisher || pub.journal || 'Preprint'} &bull; {pub.year}
+                  {pub.publisher || pub.journal} &bull; {pub.year}
                 </div>
                 
                 <div class="pub-links">
-                  {pub.url && <span class="pub-link arxiv-btn" data-url={pub.url}>Arxiv Link</span>}
                   {pub.abstract && <span class="pub-abstract-toggle" data-key={pub.key}>Abstract</span>}
                 </div>
               </div>
