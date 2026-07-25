@@ -147,6 +147,11 @@ main {
   gap: 3rem;
 }
 
+.layout-single {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 @media (max-width: 768px) {
   .layout-grid {
     grid-template-columns: 1fr;
