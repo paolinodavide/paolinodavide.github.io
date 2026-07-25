@@ -2,47 +2,142 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="About Me" activeTab="about">
-  <div style="animation: fadeIn 0.5s ease-out;">
-    <h1 style="font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 0.5rem;">Davide Paolino</h1>
-    <p style="font-size: 1.1rem; color: var(--color-accent); font-weight: 500; margin-bottom: 2rem;">
-      PhD Candidate in Physics (Active Matter) at Gulliver Lab, ESPCI Paris
-    </p>
+<Layout title="Home" activeTab="about">
+  <div style="animation: fadeIn 0.5s ease-out; padding-top: 1rem;">
+    <!-- Large Bold Central/Modern Text -->
+    <h1 class="hero-text">
+      yo i'm davide<br/>
+      <span class="highlight">phd student</span> in physics of <span class="gradient-text">active matter</span>
+    </h1>
 
-    <div style="font-size: 1.05rem; line-height: 1.75; color: var(--text-secondary); display: flex; flex-direction: column; gap: 1.25rem;">
+    <div class="bio-text">
       <p>
-        I am a PhD student with a background in Physics of Complex Systems. My academic journey has been driven by a deep curiosity for statistical physics, computational methods, and stochastic processes, with applications ranging from condensed matter systems to data-driven inference techniques.
+        I am a PhD candidate at Gulliver Lab, ESPCI Paris, working under the supervision of Prof. Ludovic Berthier. My research focuses on active and disordered systems using numerical simulations and statistical physics tools to understand non-equilibrium phase transitions and glassy dynamics.
       </p>
-      
       <p>
-        My research focuses on developing Monte Carlo simulations, Boltzmann inversion methods, and force inference models to better understand complex interacting systems. As part of my Master's thesis, I worked on inferring particle interactions from configuration data, a project that bridges physics, statistical learning, and computational modeling.
-      </p>
-      
-      <p>
-        I am passionate about applying computational physics and statistical modeling to real-world problems, whether in academia or industry. In my free time, I enjoy coding, exploring interdisciplinary research topics, and sharing knowledge through scientific outreach.
+        Previously, I graduated with a Master's in Physics of Complex Systems (Politecnico di Torino, SISSA, Université Paris Cité), working on Boltzmann Inversion and force inference methods.
       </p>
     </div>
 
-    <div style="margin-top: 3rem; padding: 2rem; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
-      <h3 style="margin-bottom: 0.75rem; color: var(--text-primary);">Research Interests</h3>
-      <p style="margin-bottom: 1.25rem; font-size: 0.95rem;">
-        My work lies at the intersection of statistical mechanics and computational physics:
+    <!-- Scroll Down Interests Redirecting to Publications -->
+    <div class="section-divider"></div>
+    
+    <div class="interests-section">
+      <h2 style="font-family: var(--font-serif); margin-bottom: 0.75rem;">Research Interests</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1rem;">
+        Click on any area below to view related publications and preprints:
       </p>
-      <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0;">
-        <li class="tag">Active Matter</li>
-        <li class="tag">Statistical Physics</li>
-        <li class="tag">Monte Carlo Simulations</li>
-        <li class="tag">Inverse Problems</li>
-        <li class="tag">Interacting Particle Systems</li>
-        <li class="tag">Disordered Systems</li>
-      </ul>
+      
+      <div class="interests-grid">
+        <a href="/publications" class="interest-card-link">
+          <div class="interest-card">
+            <div class="interest-icon">🔋</div>
+            <h3 class="interest-title">Active Matter <i class="fa-solid fa-arrow-right-long arrow-icon"></i></h3>
+            <p style="font-size: 0.925rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.5;">
+              Investigating collective motions and dynamic glassiness of self-propelled particle configurations.
+            </p>
+          </div>
+        </a>
+
+        <a href="/publications" class="interest-card-link">
+          <div class="interest-card">
+            <div class="interest-icon">🕸️</div>
+            <h3 class="interest-title">Statistical Mechanics <i class="fa-solid fa-arrow-right-long arrow-icon"></i></h3>
+            <p style="font-size: 0.925rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.5;">
+              Analyzing out-of-equilibrium thermodynamics and phase transitions in disordered interactive systems.
+            </p>
+          </div>
+        </a>
+
+        <a href="/publications" class="interest-card-link">
+          <div class="interest-card">
+            <div class="interest-icon">🎲</div>
+            <h3 class="interest-title">Monte Carlo Methods <i class="fa-solid fa-arrow-right-long arrow-icon"></i></h3>
+            <p style="font-size: 0.925rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.5;">
+              Building high-efficiency stochastic simulations to model many-body transitions and configuration states.
+            </p>
+          </div>
+        </a>
+
+        <a href="/publications" class="interest-card-link">
+          <div class="interest-card">
+            <div class="interest-icon">🔍</div>
+            <h3 class="interest-title">Inverse Problems <i class="fa-solid fa-arrow-right-long arrow-icon"></i></h3>
+            <p style="font-size: 0.925rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.5;">
+              Reconstructing effective pair interactions and forces directly from experimental configurations.
+            </p>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </Layout>
 
 <style>
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-text {
+    font-family: var(--font-sans);
+    font-size: 2.85rem;
+    line-height: 1.25;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    text-transform: lowercase;
+  }
+
+  .highlight {
+    color: var(--color-primary);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+
+  .bio-text {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 680px;
+  }
+
+  .section-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 4rem 0 3rem 0;
+  }
+
+  .interest-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .interest-card-link:hover {
+    color: inherit;
+  }
+
+  .arrow-icon {
+    font-size: 0.85rem;
+    margin-left: 0.25rem;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all var(--transition-fast);
+    color: var(--color-primary);
+  }
+
+  .interest-card:hover .arrow-icon {
+    opacity: 1;
+    transform: translateX(0);
   }
 </style>

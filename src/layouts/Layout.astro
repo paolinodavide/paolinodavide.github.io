@@ -14,7 +14,6 @@ const { title, description = "Davide Paolino - PhD Candidate in Physics", active
 const blogPosts = await getCollection('blog');
 const searchIndex = [
   { title: 'About Me', url: '/', category: 'Page' },
-  { title: 'Research Interests', url: '/interests', category: 'Page' },
   { title: 'Publications & Preprints', url: '/publications', category: 'Page' },
   { title: 'Curriculum Vitae (CV)', url: '/cv', category: 'Page' },
   { title: 'Blog Posts', url: '/blog', category: 'Page' },
@@ -62,7 +61,6 @@ const searchIndex = [
         <nav style="display: flex; align-items: center;">
           <ul class="nav-links">
             <li><a href="/" class={activeTab === 'about' ? 'active' : ''}>About</a></li>
-            <li><a href="/interests" class={activeTab === 'interests' ? 'active' : ''}>Interests</a></li>
             <li><a href="/publications" class={activeTab === 'publications' ? 'active' : ''}>Publications</a></li>
             <li><a href="/cv" class={activeTab === 'cv' ? 'active' : ''}>CV</a></li>
             <li><a href="/blog" class={activeTab === 'blog' ? 'active' : ''}>Blog</a></li>
@@ -84,6 +82,11 @@ const searchIndex = [
 
     <div class="container">
       <main class="layout-grid">
+        <!-- Main Content Area -->
+        <section class="content-area">
+          <slot />
+        </section>
+
         <!-- Sidebar -->
         <aside class="sidebar">
           <div class="profile-card">
@@ -109,11 +112,6 @@ const searchIndex = [
             </div>
           </div>
         </aside>
-
-        <!-- Main Content Area -->
-        <section class="content-area">
-          <slot />
-        </section>
       </main>
     </div>
 
