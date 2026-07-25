@@ -62,37 +62,30 @@ function renderAuthors(authorsStr: string) {
     <div class="pub-list">
       {publications.map((pub) => {
         const authors = renderAuthors(pub.author);
+        const targetUrl = pub.doi ? `https://doi.org/${pub.doi}` : pub.url;
+        
         return (
-          <div class="pub-card">
-            <h3 class="pub-title">
-              {pub.doi ? (
-                <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer" style="color: inherit;">
-                  {pub.title}
-                </a>
-              ) : pub.url ? (
-                <a href={pub.url} target="_blank" rel="noopener noreferrer" style="color: inherit;">
-                  {pub.title}
-                </a>
-              ) : (
-                pub.title
-              )}
-            </h3>
-            <div class="pub-authors">
-              {authors.map((auth, i) => (
-                <span class={auth.isMe ? 'me' : ''}>
-                  {auth.name}{!auth.isLast && ', '}
-                </span>
-              ))}
-            </div>
-            <div class="pub-meta">
-              {pub.publisher || pub.journal || 'Preprint'} &bull; {pub.year}
-            </div>
-            
-            <div class="pub-links">
-              {pub.url && <a href={pub.url} target="_blank" rel="noopener noreferrer" class="pub-link">Arxiv Link</a>}
-              {pub.doi && <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer" class="pub-link">DOI</a>}
-              {pub.abstract && <button class="pub-abstract-toggle" data-key={pub.key}>Abstract</button>}
-            </div>
+          <div class="pub-card-wrapper">
+            <a href={targetUrl} target="_blank" rel="noopener noreferrer" class="pub-card-link">
+              <div class="pub-card">
+                <h3 class="pub-title">{pub.title}</h3>
+                <div class="pub-authors">
+                  {authors.map((auth, i) => (
+                    <span class={auth.isMe ? 'me' : ''}>
+                      {auth.name}{!auth.isLast && ', '}
+                    </span>
+                  ))}
+                </div>
+                <div class="pub-meta">
+                  {pub.publisher || pub.journal || 'Preprint'} &bull; {pub.year}
+                </div>
+                
+                <div class="pub-links">
+                  {pub.url && <span class="pub-link arxiv-btn" data-url={pub.url}>Arxiv Link</span>}
+                  {pub.abstract && <span class="pub-abstract-toggle" data-key={pub.key}>Abstract</span>}
+                </div>
+              </div>
+            </a>
 
             {pub.abstract && (
               <div class="pub-abstract" id={`abstract-${pub.key}`}>
@@ -110,12 +103,27 @@ function renderAuthors(authorsStr: string) {
   // Add toggle functionality for abstract dropdowns
   const toggles = document.querySelectorAll('.pub-abstract-toggle');
   toggles.forEach(toggle => {
-    toggle.addEventListener('click', () => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       const key = toggle.getAttribute('data-key');
       const abstract = document.getElementById(`abstract-${key}`);
       if (abstract) {
         abstract.classList.toggle('active');
         toggle.textContent = abstract.classList.contains('active') ? 'Hide Abstract' : 'Abstract';
+      }
+    });
+  });
+
+  // Handle Arxiv button click without triggering parent card link
+  const arxivBtns = document.querySelectorAll('.arxiv-btn');
+  arxivBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const url = btn.getAttribute('data-url');
+      if (url) {
+        window.open(url, '_blank', 'noopener,noreferrer');
       }
     });
   });
@@ -127,12 +135,30 @@ function renderAuthors(authorsStr: string) {
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .pub-title a {
-    transition: color var(--transition-fast);
+  .pub-card-wrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
   }
 
-  .pub-title a:hover {
-    color: var(--color-primary) !important;
-    text-decoration: underline;
+  .pub-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .pub-card {
+    transition: all var(--transition-normal);
+  }
+
+  .pub-card-link:hover .pub-card {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .arxiv-btn, .pub-abstract-toggle {
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
   }
 </style>
