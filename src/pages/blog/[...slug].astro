@@ -1,0 +1,157 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+---
+
+<Layout title={post.data.title} activeTab="blog" description={post.data.description}>
+  <div style="animation: fadeIn 0.4s ease-out;">
+    <a href="/blog" class="btn btn-outline" style="margin-bottom: 2rem; padding: 0.5rem 1rem; font-size: 0.85rem;">
+      <i class="fa-solid fa-arrow-left" style="margin-right: 0.5rem;"></i> Back to blog
+    </a>
+
+    <article class="blog-post-content">
+      <header class="blog-post-header">
+        <div class="blog-date">{formatDate(post.data.date)}</div>
+        <h1 style="font-family: var(--font-serif); font-size: 2.25rem; line-height: 1.2; margin-bottom: 1rem; color: var(--text-primary);">
+          {post.data.title}
+        </h1>
+        {post.data.description && (
+          <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0;">
+            {post.data.description}
+          </p>
+        )}
+      </header>
+
+      <div class="markdown-body">
+        <Content />
+      </div>
+    </article>
+  </div>
+</Layout>
+
+<style is:global>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Markdown Body Styles */
+  .markdown-body {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .markdown-body h2 {
+    font-size: 1.6rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .markdown-body h3 {
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .markdown-body p {
+    margin-bottom: 1.25rem;
+  }
+
+  .markdown-body ul, .markdown-body ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .markdown-body li {
+    margin-bottom: 0.5rem;
+  }
+
+  .markdown-body pre {
+    background-color: #0f172a !important; /* Dark slate */
+    color: #f8fafc;
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    border: 1px solid #1e293b;
+  }
+
+  .markdown-body code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.9em;
+    background-color: #f1f5f9;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    color: #0f172a;
+  }
+
+  .markdown-body pre code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    color: inherit;
+  }
+
+  .markdown-body blockquote {
+    border-left: 4px solid var(--color-primary);
+    padding-left: 1rem;
+    margin-left: 0;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+
+  .markdown-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .markdown-body hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 2rem 0;
+  }
+
+  .markdown-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+  }
+
+  .markdown-body th, .markdown-body td {
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  .markdown-body th {
+    background-color: var(--bg-primary);
+    font-weight: 600;
+  }
+</style>

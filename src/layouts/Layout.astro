@@ -1,0 +1,278 @@
+---
+import { getCollection } from 'astro:content';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  activeTab?: string;
+}
+
+const { title, description = "Davide Paolino - PhD Candidate in Physics", activeTab = "" } = Astro.props;
+
+// Fetch blog posts to index in search command palette
+const blogPosts = await getCollection('blog');
+const searchIndex = [
+  { title: 'About Me', url: '/', category: 'Page' },
+  { title: 'Publications & Preprints', url: '/publications', category: 'Page' },
+  { title: 'Curriculum Vitae (CV)', url: '/cv', category: 'Page' },
+  { title: 'Blog Posts', url: '/blog', category: 'Page' },
+  ...blogPosts.map(post => ({
+    title: post.data.title,
+    url: `/blog/${post.id}`,
+    category: 'Blog Post'
+  }))
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Davide Paolino</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Theme initialization -->
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+      document.documentElement.setAttribute('data-theme', theme);
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="container nav-container">
+        <a href="/" class="logo">
+          Davide <span>Paolino</span>
+        </a>
+        <nav style="display: flex; align-items: center;">
+          <ul class="nav-links">
+            <li><a href="/" class={activeTab === 'about' ? 'active' : ''}>About</a></li>
+            <li><a href="/publications" class={activeTab === 'publications' ? 'active' : ''}>Publications</a></li>
+            <li><a href="/cv" class={activeTab === 'cv' ? 'active' : ''}>CV</a></li>
+            <li><a href="/blog" class={activeTab === 'blog' ? 'active' : ''}>Blog</a></li>
+          </ul>
+          
+          <div class="header-actions">
+            <button id="search-btn" class="search-bar-btn" title="Search (Ctrl+K)">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span>Search...</span>
+              <span class="search-hint">⌘K</span>
+            </button>
+            <button id="theme-toggle" class="icon-btn" title="Toggle theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <main class="layout-single">
+        <slot />
+      </main>
+    </div>
+
+    <footer style="margin-top: 5rem; padding: 2rem 0; border-top: 1px solid var(--border-color); text-align: center; font-size: 0.9rem; color: var(--text-tertiary);">
+      <div class="container">
+        <p>&copy; {new Date().getFullYear()} Davide Paolino. Powered by Astro.</p>
+      </div>
+    </footer>
+
+    <!-- Search Modal Dialog -->
+    <div id="search-modal" class="modal-overlay" data-index={JSON.stringify(searchIndex)}>
+      <div class="modal-container">
+        <div class="search-input-wrapper">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="search-input" class="search-input" placeholder="Type to search page or blog post..." autocomplete="off" />
+        </div>
+        <ul id="search-results" class="search-results">
+          <!-- dynamically rendered -->
+        </ul>
+        <div class="modal-footer">
+          <div class="modal-footer-shortcuts">
+            <div class="modal-footer-shortcut">
+              <kbd>↑↓</kbd> <span>navigate</span>
+            </div>
+            <div class="modal-footer-shortcut">
+              <kbd>↵</kbd> <span>select</span>
+            </div>
+          </div>
+          <div class="modal-footer-shortcut">
+            <kbd>esc</kbd> <span>close</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      // 1. Theme Logic
+      const themeToggle = document.getElementById('theme-toggle');
+      const getTheme = () => document.documentElement.getAttribute('data-theme') || 'light';
+      
+      const updateToggleIcon = (theme) => {
+        if (themeToggle) {
+          const icon = themeToggle.querySelector('i');
+          if (icon) {
+            if (theme === 'dark') {
+              icon.className = 'fa-solid fa-sun';
+            } else {
+              icon.className = 'fa-solid fa-moon';
+            }
+          }
+        }
+      };
+
+      // Set initial icon
+      updateToggleIcon(getTheme());
+
+      if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+          const currentTheme = getTheme();
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          updateToggleIcon(newTheme);
+        });
+      }
+
+      // 2. Command Palette Search Logic
+      const searchBtn = document.getElementById('search-btn');
+      const searchModal = document.getElementById('search-modal');
+      const searchInput = document.getElementById('search-input') as HTMLInputElement;
+      const searchResults = document.getElementById('search-results');
+      
+      let searchData = [];
+      try {
+        searchData = JSON.parse(searchModal?.getAttribute('data-index') || '[]');
+      } catch (e) {
+        console.error('Failed to parse search data index', e);
+      }
+
+      let selectedIndex = 0;
+      let filteredItems = [];
+
+      const openSearch = () => {
+        searchModal?.classList.add('open');
+        searchInput?.focus();
+        renderResults('');
+      };
+
+      const closeSearch = () => {
+        searchModal?.classList.remove('open');
+        if (searchInput) searchInput.value = '';
+      };
+
+      const renderResults = (query) => {
+        if (!searchResults) return;
+        
+        const q = query.toLowerCase().trim();
+        filteredItems = q 
+          ? searchData.filter(item => item.title.toLowerCase().includes(q))
+          : searchData.slice(0, 8); // show first few items by default
+
+        selectedIndex = 0;
+        
+        if (filteredItems.length === 0) {
+          searchResults.innerHTML = `<li style="padding: 1rem 1.25rem; color: var(--text-tertiary); font-size: 0.95rem;">No results found for "${query}"</li>`;
+          return;
+        }
+
+        searchResults.innerHTML = filteredItems.map((item, idx) => `
+          <li class="search-item ${idx === selectedIndex ? 'selected' : ''}" data-index="${idx}">
+            <a href="${item.url}">
+              <span>${item.title}</span>
+              <span class="search-item-meta">${item.category}</span>
+            </a>
+          </li>
+        `).join('');
+
+        // Add mouse hover support to sync index
+        const renderedItems = searchResults.querySelectorAll('.search-item');
+        renderedItems.forEach((el) => {
+          el.addEventListener('mouseenter', () => {
+            const idx = parseInt(el.getAttribute('data-index') || '0');
+            updateSelection(idx);
+          });
+        });
+      };
+
+      const updateSelection = (newIndex) => {
+        if (!searchResults) return;
+        const items = searchResults.querySelectorAll('.search-item');
+        if (items[selectedIndex]) items[selectedIndex].classList.remove('selected');
+        selectedIndex = newIndex;
+        if (items[selectedIndex]) items[selectedIndex].classList.add('selected');
+      };
+
+      // Event Listeners
+      searchBtn?.addEventListener('click', openSearch);
+      
+      searchModal?.addEventListener('click', (e) => {
+        if (e.target === searchModal) {
+          closeSearch();
+        }
+      });
+
+      searchInput?.addEventListener('input', (e) => {
+        renderResults((e.target as HTMLInputElement).value);
+      });
+
+      // Keyboard Controls
+      window.addEventListener('keydown', (e) => {
+        // Toggle Cmd+K / Ctrl+K
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          if (searchModal?.classList.contains('open')) {
+            closeSearch();
+          } else {
+            openSearch();
+          }
+        }
+
+        // Close on Escape
+        if (e.key === 'Escape' && searchModal?.classList.contains('open')) {
+          e.preventDefault();
+          closeSearch();
+        }
+
+        if (searchModal?.classList.contains('open') && filteredItems.length > 0) {
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const nextIdx = (selectedIndex + 1) % filteredItems.length;
+            updateSelection(nextIdx);
+            // Scroll to view if overflowed
+            const activeEl = searchResults?.children[nextIdx] as HTMLElement;
+            activeEl?.scrollIntoView({ block: 'nearest' });
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prevIdx = (selectedIndex - 1 + filteredItems.length) % filteredItems.length;
+            updateSelection(prevIdx);
+            const activeEl = searchResults?.children[prevIdx] as HTMLElement;
+            activeEl?.scrollIntoView({ block: 'nearest' });
+          } else if (e.key === 'Enter') {
+            e.preventDefault();
+            const activeItem = filteredItems[selectedIndex];
+            if (activeItem) {
+              window.location.href = activeItem.url;
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

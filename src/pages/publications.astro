@@ -1,0 +1,164 @@
+---
+import fs from 'fs';
+import path from 'path';
+import Layout from '../layouts/Layout.astro';
+
+// Robust BibTeX parser
+function parseBibtex(text: string) {
+  const entries: any[] = [];
+  const parts = text.split(/^\s*@/m);
+  for (const part of parts) {
+    if (!part.trim()) continue;
+    const typeMatch = part.match(/^(\w+)\s*\{\s*([^,]+),/);
+    if (!typeMatch) continue;
+    const type = typeMatch[1];
+    const key = typeMatch[2];
+    
+    const bodyStart = part.indexOf('{') + 1;
+    const body = part.slice(bodyStart, part.lastIndexOf('}'));
+    
+    const fields: any = { type, key };
+    const fieldRegex = /(\w+)\s*=\s*(?:\{([\s\S]*?)\}|"([\s\S]*?)"|([^\n,]+))/g;
+    let fieldMatch;
+    while ((fieldMatch = fieldRegex.exec(body)) !== null) {
+      const name = fieldMatch[1].toLowerCase().trim();
+      let value = fieldMatch[2] || fieldMatch[3] || fieldMatch[4] || '';
+      value = value.trim();
+      // Remove enclosing brackets
+      value = value.replace(/^\{|\}$/g, '').trim();
+      fields[name] = value;
+    }
+    entries.push(fields);
+  }
+  return entries;
+}
+
+const bibPath = path.resolve('src/data/papers.bib');
+const bibFile = fs.readFileSync(bibPath, 'utf8');
+const publications = parseBibtex(bibFile);
+
+// Helper to format author lists
+function renderAuthors(authorsStr: string) {
+  if (!authorsStr) return [];
+  const authors = authorsStr.split(/\s+and\s+/);
+  return authors.map((author, index) => {
+    let formatted = author;
+    const parts = author.split(',').map(p => p.trim());
+    if (parts.length === 2) {
+      formatted = `${parts[1]} ${parts[0]}`;
+    }
+    
+    const isMe = formatted.toLowerCase().includes('paolino');
+    return { name: formatted, isMe, isLast: index === authors.length - 1 };
+  });
+}
+---
+
+<Layout title="Publications" activeTab="publications">
+  <div style="animation: fadeIn 0.5s ease-out;">
+    <h1 style="font-family: var(--font-serif); margin-bottom: 0.5rem;">Publications</h1>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Preprints and published articles.</p>
+
+    <div class="pub-list">
+      {publications.map((pub) => {
+        const authors = renderAuthors(pub.author);
+        const targetUrl = pub.doi ? `https://doi.org/${pub.doi}` : pub.url;
+        
+        return (
+          <div class="pub-card-wrapper">
+            <a href={targetUrl} target="_blank" rel="noopener noreferrer" class="pub-card-link">
+              <div class="pub-card">
+                <h3 class="pub-title">{pub.title}</h3>
+                <div class="pub-authors">
+                  {authors.map((auth, i) => (
+                    <span class={auth.isMe ? 'me' : ''}>
+                      {auth.name}{!auth.isLast && ', '}
+                    </span>
+                  ))}
+                </div>
+                <div class="pub-meta">
+                  {pub.publisher || pub.journal || 'Preprint'} &bull; {pub.year}
+                </div>
+                
+                <div class="pub-links">
+                  {pub.url && <span class="pub-link arxiv-btn" data-url={pub.url}>Arxiv Link</span>}
+                  {pub.abstract && <span class="pub-abstract-toggle" data-key={pub.key}>Abstract</span>}
+                </div>
+              </div>
+            </a>
+
+            {pub.abstract && (
+              <div class="pub-abstract" id={`abstract-${pub.key}`}>
+                {pub.abstract}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Add toggle functionality for abstract dropdowns
+  const toggles = document.querySelectorAll('.pub-abstract-toggle');
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const key = toggle.getAttribute('data-key');
+      const abstract = document.getElementById(`abstract-${key}`);
+      if (abstract) {
+        abstract.classList.toggle('active');
+        toggle.textContent = abstract.classList.contains('active') ? 'Hide Abstract' : 'Abstract';
+      }
+    });
+  });
+
+  // Handle Arxiv button click without triggering parent card link
+  const arxivBtns = document.querySelectorAll('.arxiv-btn');
+  arxivBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const url = btn.getAttribute('data-url');
+      if (url) {
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+    });
+  });
+</script>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .pub-card-wrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .pub-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .pub-card {
+    transition: all var(--transition-normal);
+  }
+
+  .pub-card-link:hover .pub-card {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .arxiv-btn, .pub-abstract-toggle {
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+  }
+</style>
