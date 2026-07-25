@@ -83,11 +83,6 @@ const searchIndex = [
 
     <div class="container">
       <main class={hideSidebar ? "layout-single" : "layout-grid"}>
-        <!-- Main Content Area -->
-        <section class="content-area">
-          <slot />
-        </section>
-
         <!-- Sidebar -->
         {!hideSidebar && (
           <aside class="sidebar">
@@ -115,6 +110,11 @@ const searchIndex = [
             </div>
           </aside>
         )}
+
+        <!-- Main Content Area -->
+        <section class="content-area">
+          <slot />
+        </section>
       </main>
     </div>
 
