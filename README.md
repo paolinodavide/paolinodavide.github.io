@@ -47,5 +47,24 @@ The site is configured to deploy automatically to GitHub Pages using GitHub Acti
 
 ---
 
+## 📝 Re-enabling the Blog
+
+The blog section is currently disabled. To re-enable it in the future:
+
+1. **Restore page routes and RSS feed**:
+   ```bash
+   mv src/pages/_blog src/pages/blog
+   mv src/pages/_rss.xml.ts src/pages/rss.xml.ts
+   ```
+
+2. **Uncomment the navigation link** in `src/layouts/Layout.astro`:
+   ```astro
+   <li><a href="/blog" class={activeTab === 'blog' ? 'active' : ''}>Blog</a></li>
+   ```
+
+3. **Uncomment search indexing** in `src/utils/searchIndex.ts` (uncomment the blog entry in `pageItems` and the blog posts loop).
+
+---
+
 ## 📄 License
 This project is open-source and available under the [MIT License](LICENSE).
