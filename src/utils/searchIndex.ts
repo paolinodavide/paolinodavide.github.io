@@ -67,18 +67,18 @@ export async function getSearchIndex(): Promise<SearchItem[]> {
       description: 'Academic journey, research experience, education, and technical skills.',
       keywords: 'cv resume experience education skills awards thesis'
     },
-    {
+    /* {
       id: 'page-blog',
       title: 'Blog',
       url: '/blog',
       category: 'Page',
       description: 'Notes, articles, and thoughts on statistical physics and complex systems.',
       keywords: 'blog articles posts thoughts'
-    }
+    } */
   ];
 
-  // 1. Index Blog Posts
-  try {
+  // 1. Index Blog Posts (Commented out)
+  /* try {
     const blogPosts = await getCollection('blog');
     blogPosts.forEach((post) => {
       const tags = Array.isArray(post.data.tags) ? post.data.tags.join(' ') : post.data.tags || '';
@@ -95,7 +95,7 @@ export async function getSearchIndex(): Promise<SearchItem[]> {
     });
   } catch (e) {
     console.error('Error indexing blog posts:', e);
-  }
+  } */
 
   // 2. Index Publications
   try {
